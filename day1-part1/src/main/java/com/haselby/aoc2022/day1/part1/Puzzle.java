@@ -5,7 +5,8 @@ public class Puzzle {
         System.out.println("Hello Day1, Part1");
 
         //Read puzzle input located in folder: /scr/main/resources
-        InputReader.readAllDataAtOnce("input.txt");
+        //InputReader.readAllDataAtOnce("input.txt");
+        InputReader.readDataIntoList("input.txt");
 
     }
 }

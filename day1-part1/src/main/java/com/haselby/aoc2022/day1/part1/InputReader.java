@@ -6,6 +6,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -19,10 +20,44 @@ import java.util.List;
 // Attribution: https://howtodoinjava.com/java/library/parse-read-write-csv-opencsv/
 public class InputReader {
 
-    // Java code to illustrate reading all data at once
-    public static void readAllDataAtOnce(String file) {
+// Java code to illustrate reading all data at once
+public static void readAllDataAtOnce(String file) {
         try {
+        // Create an object of file reader capable of reading file from /scr/main/resources/
+        URL fileUrl = InputReader.class.getClassLoader().getResource(file);
+        FileReader filereader = new FileReader(fileUrl.getFile());
 
+        // Create csvReader object
+        // Default separator is comma
+        // Start reading from line number 0 (line numbers start from zero)
+        CSVParser csvParser = new CSVParserBuilder()
+        .withSeparator(',')
+        .withIgnoreQuotations(true)
+        .build();
+
+        CSVReader csvReader = new CSVReaderBuilder(filereader)
+        .withSkipLines(0)
+        .withCSVParser(csvParser)
+        .build();
+
+        List<String[]> allData = csvReader.readAll();
+
+        // Print Data
+        for (String[] row : allData) {
+        for (String cell : row) {
+        System.out.print(cell + "\t");
+        }
+        System.out.println();
+        }
+        }
+        catch (Exception e) {
+        e.printStackTrace();
+        }
+        }
+
+public static List<String> readDataIntoList(String file) {
+        List<String> singleColumnList = new ArrayList<String>();
+        try {
             // Create an object of file reader capable of reading file from /scr/main/resources/
             URL fileUrl = InputReader.class.getClassLoader().getResource(file);
             FileReader filereader = new FileReader(fileUrl.getFile());
@@ -31,28 +66,30 @@ public class InputReader {
             // Default separator is comma
             // Start reading from line number 0 (line numbers start from zero)
             CSVParser csvParser = new CSVParserBuilder()
-                    .withSeparator(',')
-                    .withIgnoreQuotations(true)
-                    .build();
+            .withSeparator(',')
+            .withIgnoreQuotations(true)
+            .build();
 
             CSVReader csvReader = new CSVReaderBuilder(filereader)
-                    .withSkipLines(0)
-                    .withCSVParser(csvParser)
-                    .build();
+            .withSkipLines(0)
+            .withCSVParser(csvParser)
+            .build();
 
             List<String[]> allData = csvReader.readAll();
 
             // Print Data
             for (String[] row : allData) {
-                for (String cell : row) {
-                    System.out.print(cell + "\t");
+                singleColumnList.add(row[0]);
                 }
-                System.out.println();
-            }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
+
+        System.out.println("ArrayList : " + singleColumnList.toString());
+
+        return singleColumnList;
+
+        }
 
 }
