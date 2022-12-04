@@ -21,7 +21,6 @@ public class InputFileReader {
     public static void print(String filename) throws IOException {
 
         List<String[]> allData;
-        List<String> oneDimensionListOfStrings = new ArrayList<String>();
         allData = read(filename);
 
         // Print Data
@@ -35,7 +34,7 @@ public class InputFileReader {
 
     public static List<String> readIntoListOfStrings(String filename) throws IOException {
         List<String[]> allData;
-        List<String> oneDimensionListOfStrings = new ArrayList<String>();
+        List<String> oneDimensionListOfStrings = new ArrayList<>();
 
         allData = read(filename);
 
@@ -48,7 +47,7 @@ public class InputFileReader {
 
     public static List<Integer> readIntoListOfIntegers(String filename) throws IOException {
         List<String[]> allData;
-        List<Integer> oneDimensionListOfIntegers = new ArrayList<Integer>();
+        List<Integer> oneDimensionListOfIntegers = new ArrayList<>();
 
         allData = read(filename);
 
@@ -70,12 +69,15 @@ public class InputFileReader {
         URL fileUrl = InputFileReader.class.getClassLoader().getResource(filename);
         var file = (fileUrl != null) ? fileUrl.getFile() : null;
 
-        FileReader filereader = null;
-        // check if file exists or not
+        // Verify file is not null
+        if (file == null) throw new IOException("File not found");
+
+        FileReader fileReader;
+        // Verify fileReader initialized successfully
         try {
-            filereader = new FileReader(file);
+            fileReader = new FileReader(file);
         } catch (FileNotFoundException fe) {
-            System.out.println("File not found");
+            throw new IOException("File not found");
         }
 
         List<String[]> allData;
@@ -88,7 +90,7 @@ public class InputFileReader {
                 .build();
 
         // CSVReaderBuilder supports try-with-resources by implementing AutoCloseable interface
-        try (CSVReader csvReader = new CSVReaderBuilder(filereader)
+        try (CSVReader csvReader = new CSVReaderBuilder(fileReader)
                 .withSkipLines(0).
                 withCSVParser(csvParser)
                 .build()) {
@@ -100,7 +102,7 @@ public class InputFileReader {
             }
         }
 
-        filereader.close();
+        fileReader.close();
         return allData;
     }
 }
