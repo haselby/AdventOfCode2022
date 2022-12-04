@@ -5,9 +5,17 @@ public class Puzzle {
         System.out.println("Hello Day1, Part1");
 
         //Read puzzle input located in folder: /scr/main/resources
-        InputReader.readAllDataAtOnce("input.txt");
-        //InputReader.readAllDataAtOnce("MissingFile.txt");
+        try {
+            InputFileReader.print("input.txt");
+            InputFileReader.readIntoListOfStrings("input.txt");
+            InputFileReader.readIntoListOfIntegers("input.txt");
+        }
+        catch(Exception e) {
+            System.out.println("Puzzle input is missing. Closing application");
+            System.exit(0);
+        }
 
+        System.out.println("Puzzle input read successfully");
 
     }
 }
