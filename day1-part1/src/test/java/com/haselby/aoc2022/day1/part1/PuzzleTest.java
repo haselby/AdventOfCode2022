@@ -3,25 +3,25 @@ import org.junit.jupiter.api.*;
 
 @DisplayName("Day 1, Part 1 - Puzzle Test")
 public class PuzzleTest {
-    @BeforeAll
-    static void beforeAll() {
-        System.out.println("Before all test methods");
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        System.out.println("Before each test method");
-    }
-
-    @AfterEach
-    void afterEach() {
-        System.out.println("After each test method");
-    }
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("After all test methods");
-    }
+//    @BeforeAll
+//    static void beforeAll() {
+//        System.out.println("Before all test methods");
+//    }
+//
+//    @BeforeEach
+//    void beforeEach() {
+//        System.out.println("Before each test method");
+//    }
+//
+//    @AfterEach
+//    void afterEach() {
+//        System.out.println("After each test method");
+//    }
+//
+//    @AfterAll
+//    static void afterAll() {
+//        System.out.println("After all test methods");
+//    }
 
     @Test
     @DisplayName("First test")
