@@ -14,7 +14,7 @@ public class PuzzleInput {
         List<Integer> listOfIntegers = new ArrayList<>();
 
         // Find input file in resources folder: /scr/main/resources
-        URL puzzleInputFileUrl = InputFileReader.class.getClassLoader().getResource(filename);
+        URL puzzleInputFileUrl = PuzzleInput.class.getClassLoader().getResource(filename);
         var file = (puzzleInputFileUrl != null) ? puzzleInputFileUrl.getFile() : null;
         if (file == null) throw new IOException("Input filename does not exist!");
 
