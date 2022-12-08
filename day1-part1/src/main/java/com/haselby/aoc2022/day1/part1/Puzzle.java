@@ -1,5 +1,6 @@
 package com.haselby.aoc2022.day1.part1;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Puzzle {
         try {
             puzzleInput = PuzzleInput.readIntoListOfIntegers("input.txt");
             System.out.println("Puzzle input read successfully");
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Puzzle input is missing. Closing application");
             e.printStackTrace();
             System.exit(0);
