@@ -50,7 +50,6 @@ public class PuzzleInputTest {
     @Test
     @DisplayName("readIntoListOfIntegers - passing example input file - returns expected list of Integers")
     void readIntoListOfIntegers_ExampleInputFile_ReturnsExpectedListOfIntegers() {
-        System.out.println("Second test method");
         List<Integer> puzzleInputTest01 = new ArrayList<>();
 
         try {

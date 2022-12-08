@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PuzzleInput {
 
-    public static List<Integer> readIntoListOfIntegers(String filename) throws IOException {
+    public static ArrayList<Integer> readIntoListOfIntegers(String filename) throws IOException {
 
-        List<Integer> listOfIntegers = new ArrayList<>();
+        ArrayList<Integer> listOfIntegers = new ArrayList<>();
 
         // Find input file in resources folder: /scr/main/resources
         URL puzzleInputFileUrl = PuzzleInput.class.getClassLoader().getResource(filename);

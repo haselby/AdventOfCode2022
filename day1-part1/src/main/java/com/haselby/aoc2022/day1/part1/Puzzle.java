@@ -2,13 +2,12 @@ package com.haselby.aoc2022.day1.part1;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Puzzle {
     public static void main(String[] args) {
         System.out.println("Hello Day1, Part1");
 
-        List<Integer> puzzleInput = new ArrayList<>();
+        ArrayList<Integer> puzzleInput = new ArrayList<>();
 
         //Read puzzle input located in folder: /scr/main/resources
         try {
@@ -20,9 +19,9 @@ public class Puzzle {
             System.exit(0);
         }
 
-        for (Integer x : puzzleInput) {
-            System.out.println(x);
-        }
+        FoodInventory foodInventory = new FoodInventory(puzzleInput);
+        int maxCaloriesHeldByElf = foodInventory.searchMaxCaloriesHeldByElf();
+        System.out.println("Max calories held by individual elf: " +  maxCaloriesHeldByElf);
 
     }
 }
