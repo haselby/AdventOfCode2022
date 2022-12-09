@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-
 public class FoodInventory {
 
     ArrayList<Integer> listOfCalories;
@@ -14,35 +13,35 @@ public class FoodInventory {
     }
 
     public int searchMaxCaloriesHeldByElves(int numberOfElves) {
-        // maxTotalCalories: index 0 - highest value; index 1 - second highest value; etc...
-        ArrayList<Integer> maxTotalCalories = new ArrayList<>();
+        ArrayList<Integer> sumOfCalories = new ArrayList<>();
 
-        // initialize list based on numberOfElves
-        for ( int i = 0; i < numberOfElves; i++) {
-            maxTotalCalories.add(0);
-        }
+        int index = 0;
+        for (Integer calories : listOfCalories) {
+            if (calories == null) {
+                // null value indicates boundary between Elves
+                index++;
 
-        int sumOfCalories = 0;
-
-        for (Integer caloriesPerItem : listOfCalories) {
-            if (caloriesPerItem == null) {
-                int maxValue = Math.max(sumOfCalories, maxTotalCalories.get(numberOfElves-1));
-                // Strategy keep a sorted list of maxTotalCalories
-                // The number of elements is this list will be restricted to the numberOfElves to be considered
-                // The lowest value of maxTotalCalories will be held at the bottom of the list
-                maxTotalCalories.set(numberOfElves-1, maxValue);
-                Collections.sort(maxTotalCalories);
-                sumOfCalories = 0;
             } else {
-                sumOfCalories += caloriesPerItem;
+                if (index >= sumOfCalories.size()) {
+                    // start a new sum
+                    sumOfCalories.add(index, calories);
+                } else {
+                    // add to existing sum
+                    sumOfCalories.set(index, sumOfCalories.get(index) + calories);
+                }
             }
         }
-        int maxTotalCaloriesByTopElves = 0;
-        for (int i : maxTotalCalories ){
-            maxTotalCaloriesByTopElves += i;
+
+        // highest values at beginning of list
+        sumOfCalories.sort(Collections.reverseOrder());
+
+        int totalCaloriesFromTopElves = 0;
+
+        for (int i = 0; i < numberOfElves; i++) {
+            totalCaloriesFromTopElves += sumOfCalories.get(i);
         }
 
-        return maxTotalCaloriesByTopElves;
+        return totalCaloriesFromTopElves;
     }
 
 

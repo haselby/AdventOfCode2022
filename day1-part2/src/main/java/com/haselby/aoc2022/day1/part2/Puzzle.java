@@ -23,5 +23,8 @@ public class Puzzle {
         int maxCaloriesHeldByElf = foodInventory.searchMaxCaloriesHeldByElves(1);
         System.out.println("Max calories held by individual elf: " +  maxCaloriesHeldByElf);
 
+        int totalCaloriesHeldByTopThreeElves = foodInventory.searchMaxCaloriesHeldByElves(3);
+        System.out.println("Total calories held by top three elves: " +  totalCaloriesHeldByTopThreeElves);
+
     }
 }
