@@ -12,12 +12,6 @@ public class StrategyGuide {
 
     public int calculateScore() {
 
-        // Score component for move you selected
-        HashMap<String, Integer> moveValue = new HashMap<>();
-        moveValue.put("rock", 1);
-        moveValue.put("paper", 2);
-        moveValue.put("scissors", 3);
-
         // Encrypted Moves
         HashMap<Character, String> encryptedMove = new HashMap<>();
         //Know Values
@@ -33,9 +27,11 @@ public class StrategyGuide {
 
         for (ArrayList<Character> individualGame : listOfRockPaperScissorMoves) {
             // TODO: Haselby - Correctly calculate individual game score
-            int gameScore = 1;
-            listOfScores.add(gameScore);
+            int roundScore = calculateRoundScore(encryptedMove.get(individualGame.get(0)),encryptedMove.get(individualGame.get(1)));
+            listOfScores.add(roundScore);
         }
+
+
 
         int sumOfScores = 0;
 
@@ -45,6 +41,26 @@ public class StrategyGuide {
 
 
         return sumOfScores;
+    }
+
+    private int calculateRoundScore(String opponentsMove, String yourMove){
+
+        // Score component for move you selected
+        HashMap<String, Integer> moveValue = new HashMap<>();
+        moveValue.put("rock", 1);
+        moveValue.put("paper", 2);
+        moveValue.put("scissors", 3);
+
+        HashMap<String, Integer> rockPaperScissorsScore = new HashMap<>();
+        rockPaperScissorsScore.put("win", 6 );
+        rockPaperScissorsScore.put("tie", 3 );
+        rockPaperScissorsScore.put("lose", 0 );
+
+        // TODO: Haselby - Need to complete determining Win / Lose / Draw
+
+        int compositeScore = moveValue.get(yourMove) + 42;
+
+        return compositeScore;
     }
 
 }
