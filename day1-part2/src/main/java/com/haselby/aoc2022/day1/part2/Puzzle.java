@@ -20,7 +20,7 @@ public class Puzzle {
         }
 
         FoodInventory foodInventory = new FoodInventory(puzzleInput);
-        int maxCaloriesHeldByElf = foodInventory.searchMaxCaloriesHeldByElf();
+        int maxCaloriesHeldByElf = foodInventory.searchMaxCaloriesHeldByElves(1);
         System.out.println("Max calories held by individual elf: " +  maxCaloriesHeldByElf);
 
     }
