@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StrategyGuide {
-    ArrayList<ArrayList<Character>> listOfRockPaperScissorMoves = new ArrayList<>();
+    ArrayList<ArrayList<Character>> listOfRockPaperScissorMoves;
 
     StrategyGuide(ArrayList<ArrayList<Character>> puzzleInput) {
         this.listOfRockPaperScissorMoves = puzzleInput;
     }
+
 
     public int calculateScore() {
 
@@ -27,10 +28,9 @@ public class StrategyGuide {
 
         for (ArrayList<Character> individualGame : listOfRockPaperScissorMoves) {
             // TODO: Haselby - Correctly calculate individual game score
-            int roundScore = calculateRoundScore(encryptedMove.get(individualGame.get(0)),encryptedMove.get(individualGame.get(1)));
+            int roundScore = calculateRoundScore(encryptedMove.get(individualGame.get(0)), encryptedMove.get(individualGame.get(1)));
             listOfScores.add(roundScore);
         }
-
 
 
         int sumOfScores = 0;
@@ -43,24 +43,49 @@ public class StrategyGuide {
         return sumOfScores;
     }
 
-    private int calculateRoundScore(String opponentsMove, String yourMove){
+    private int calculateRoundScore(String opponentsMove, String yourMove) {
+        // Encode rules of Rock Paper Scissors game
+        HashMap<String, HashMap<String, String>> rockPaperScissorsOutcome = new HashMap<>();
+
+        //outcome if you choose rock
+        HashMap<String, String> rockPaperScissorsYourMoveRock = new HashMap<>();
+        rockPaperScissorsYourMoveRock.put("rock", "tie");
+        rockPaperScissorsYourMoveRock.put("paper", "lose");
+        rockPaperScissorsYourMoveRock.put("scissors", "win");
+        rockPaperScissorsOutcome.put("rock", rockPaperScissorsYourMoveRock);
+
+        //outcome if you choose paper
+        HashMap<String, String> rockPaperScissorsYourMovePaper = new HashMap<>();
+        rockPaperScissorsYourMovePaper.put("rock", "win");
+        rockPaperScissorsYourMovePaper.put("paper", "tie");
+        rockPaperScissorsYourMovePaper.put("scissors", "lose");
+        rockPaperScissorsOutcome.put("paper", rockPaperScissorsYourMovePaper);
+
+        //outcome if you choose scissors
+        HashMap<String, String> rockPaperScissorsYourMoveScissors = new HashMap<>();
+        rockPaperScissorsYourMoveScissors.put("rock", "lose");
+        rockPaperScissorsYourMoveScissors.put("paper", "win");
+        rockPaperScissorsYourMoveScissors.put("scissors", "tie");
+        rockPaperScissorsOutcome.put("scissors", rockPaperScissorsYourMoveScissors);
 
         // Score component for move you selected
-        HashMap<String, Integer> moveValue = new HashMap<>();
-        moveValue.put("rock", 1);
-        moveValue.put("paper", 2);
-        moveValue.put("scissors", 3);
+        HashMap<String, Integer> yourMoveValue = new HashMap<>();
+        yourMoveValue.put("rock", 1);
+        yourMoveValue.put("paper", 2);
+        yourMoveValue.put("scissors", 3);
 
         HashMap<String, Integer> rockPaperScissorsScore = new HashMap<>();
-        rockPaperScissorsScore.put("win", 6 );
-        rockPaperScissorsScore.put("tie", 3 );
-        rockPaperScissorsScore.put("lose", 0 );
+        rockPaperScissorsScore.put("win", 6);
+        rockPaperScissorsScore.put("tie", 3);
+        rockPaperScissorsScore.put("lose", 0);
 
-        // TODO: Haselby - Need to complete determining Win / Lose / Draw
 
-        int compositeScore = moveValue.get(yourMove) + 42;
+        String yourRoundOutcome = rockPaperScissorsOutcome.get(yourMove).get(opponentsMove);
 
-        return compositeScore;
+        System.out.println("Your move: " + yourMove + "\t" + "Opponent's move: " + opponentsMove + "\t" + "-->" + "\t" + yourRoundOutcome);
+
+        // Return composite score
+        return rockPaperScissorsScore.get(yourRoundOutcome) + yourMoveValue.get(yourMove);
     }
 
 }
