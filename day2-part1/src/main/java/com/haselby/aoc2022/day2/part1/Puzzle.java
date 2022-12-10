@@ -20,9 +20,15 @@ public class Puzzle {
             System.exit(0);
         }
 
-        for (ArrayList<Character> xy : puzzleInput ){
-            System.out.println(xy);
-        }
+        StrategyGuide strategyGuide = new StrategyGuide(puzzleInput);
+
+        int scoreIfFollowedStrategyGuide = strategyGuide.calculateScore();
+
+        System.out.println("Your score if you followed the strategy guide exactly: " + scoreIfFollowedStrategyGuide);
+
+
+
+
 
 
 
