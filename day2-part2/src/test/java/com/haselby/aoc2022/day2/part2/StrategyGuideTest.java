@@ -42,10 +42,7 @@ public class StrategyGuideTest {
 
         StrategyGuide strategyGuide = new StrategyGuide(puzzleInputTest01);
 
-
-
-        assertEquals(15, strategyGuide.calculateScore());
-
+        assertEquals(12, strategyGuide.calculateScore());
 
     }
 

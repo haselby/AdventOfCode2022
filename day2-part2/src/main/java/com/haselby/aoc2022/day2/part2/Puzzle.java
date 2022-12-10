@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Puzzle {
 
     public static void main(String[] args) {
-        System.out.println("Hello Day2, Part1");
+        System.out.println("Hello Day2, Part2");
 
         ArrayList<ArrayList<Character>> puzzleInput = new ArrayList<>();
 
