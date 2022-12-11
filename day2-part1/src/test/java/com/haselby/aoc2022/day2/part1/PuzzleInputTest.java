@@ -32,13 +32,15 @@ public class PuzzleInputTest {
     @Test
     @DisplayName("readIntoListOfCharacters - passing example input file - should not throw exception")
     void readIntoListOfIntegers_ExampleInputFile_ShouldNotThrowException() {
-        assertDoesNotThrow(() -> PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt"));
+        PuzzleInput puzzleInput = new PuzzleInput();
+        assertDoesNotThrow(() -> puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt"));
     }
 
     @Test
     @DisplayName("readIntoListOfIntegers - passing missing input file - should throw exception")
     void readIntoListOfIntegers_MissingInputFile_ThrowsException() {
-        assertThrows(IOException.class, () -> PuzzleInput.readIntoListOfCharacters("missing-file.txt"));
+        PuzzleInput puzzleInput = new PuzzleInput();
+        assertThrows(IOException.class, () -> puzzleInput.readIntoListOfCharacters("missing-file.txt"));
 
     }
 
@@ -46,10 +48,11 @@ public class PuzzleInputTest {
     @DisplayName("readInto2DListOfCharacters - passing example input file - returns expected list of Characters")
     void readInto2DListOfCharacters_ExampleInputFile_ReturnsExpectedListOfCharacters() {
 
-        ArrayList<ArrayList<Character>> puzzleInputTest01 = new ArrayList<>();
+        ArrayList<ArrayList<Character>> parsedPuzzleInput = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
+            PuzzleInput puzzleInput = new PuzzleInput();
+            parsedPuzzleInput = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,14 +63,14 @@ public class PuzzleInputTest {
         //  B X
         //  C Z
 
-        assertEquals('A', puzzleInputTest01.get(0).get(0));
-        assertEquals('Y', puzzleInputTest01.get(0).get(1));
+        assertEquals('A', parsedPuzzleInput.get(0).get(0));
+        assertEquals('Y', parsedPuzzleInput.get(0).get(1));
 
-        assertEquals('B', puzzleInputTest01.get(1).get(0));
-        assertEquals('X', puzzleInputTest01.get(1).get(1));
+        assertEquals('B', parsedPuzzleInput.get(1).get(0));
+        assertEquals('X', parsedPuzzleInput.get(1).get(1));
 
-        assertEquals('C', puzzleInputTest01.get(2).get(0));
-        assertEquals('Z', puzzleInputTest01.get(2).get(1));
+        assertEquals('C', parsedPuzzleInput.get(2).get(0));
+        assertEquals('Z', parsedPuzzleInput.get(2).get(1));
 
 
     }

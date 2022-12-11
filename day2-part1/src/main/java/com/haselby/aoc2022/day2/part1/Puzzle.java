@@ -6,13 +6,14 @@ import java.util.ArrayList;
 public class Puzzle {
 
     public static void main(String[] args) {
-        System.out.println("Hello Day2, Part1");
+        System.out.println("Puzzle -  Day2, Part1");
 
-        ArrayList<ArrayList<Character>> puzzleInput = new ArrayList<>();
+        ArrayList<ArrayList<Character>> parsedPuzzleInput = new ArrayList<>();
 
-        //Read puzzle input located in folder: /scr/main/resources
+        // Read puzzle input located in folder: /scr/main/resources
+        PuzzleInput puzzleInput = new PuzzleInput();
         try {
-            puzzleInput = PuzzleInput.readIntoListOfCharacters("input.txt");
+            parsedPuzzleInput = puzzleInput.readIntoListOfCharacters("input.txt");
             System.out.println("Puzzle input read successfully");
         } catch (IOException e) {
             System.out.println("Puzzle input is missing. Closing application");
@@ -20,17 +21,11 @@ public class Puzzle {
             System.exit(0);
         }
 
-        StrategyGuide strategyGuide = new StrategyGuide(puzzleInput);
+        StrategyGuide strategyGuide = new StrategyGuide(parsedPuzzleInput);
 
         int scoreIfFollowedStrategyGuide = strategyGuide.calculateScore();
 
         System.out.println("Your score if you followed the strategy guide exactly: " + scoreIfFollowedStrategyGuide);
-
-
-
-
-
-
 
     }
 }

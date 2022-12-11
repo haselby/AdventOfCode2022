@@ -30,21 +30,19 @@ public class StrategyGuideTest {
     @Test
     @DisplayName("calculateScore - passing example input file - returns expected score")
     void calculateScore_ExampleInputFile_ReturnsExpectedScore() {
-        ArrayList<ArrayList<Character>> puzzleInputTest01 = new ArrayList<>();
+        ArrayList<ArrayList<Character>> parsedPuzzleInput = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
+            PuzzleInput puzzleInput = new PuzzleInput();
+            parsedPuzzleInput = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        StrategyGuide strategyGuide = new StrategyGuide(puzzleInputTest01);
-
-
+        StrategyGuide strategyGuide = new StrategyGuide(parsedPuzzleInput);
 
         assertEquals(15, strategyGuide.calculateScore());
-
 
     }
 
