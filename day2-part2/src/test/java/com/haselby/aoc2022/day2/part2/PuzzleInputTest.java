@@ -50,11 +50,11 @@ public class PuzzleInputTest {
     @DisplayName("readInto2DListOfCharacters - passing example input file - returns expected list of Characters")
     void readInto2DListOfCharacters_ExampleInputFile_ReturnsExpectedListOfCharacters() {
 
-        ArrayList<ArrayList<Character>> puzzleInputTest01 = new ArrayList<>();
+        ArrayList<ArrayList<Character>> parsePuzzleInput = new ArrayList<>();
 
         try {
             PuzzleInput puzzleInput = new PuzzleInput();
-            puzzleInputTest01 = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
+            parsePuzzleInput = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,17 +65,15 @@ public class PuzzleInputTest {
         //  B X
         //  C Z
 
-        assertEquals('A', puzzleInputTest01.get(0).get(0));
-        assertEquals('Y', puzzleInputTest01.get(0).get(1));
+        assertEquals('A', parsePuzzleInput.get(0).get(0));
+        assertEquals('Y', parsePuzzleInput.get(0).get(1));
 
-        assertEquals('B', puzzleInputTest01.get(1).get(0));
-        assertEquals('X', puzzleInputTest01.get(1).get(1));
+        assertEquals('B', parsePuzzleInput.get(1).get(0));
+        assertEquals('X', parsePuzzleInput.get(1).get(1));
 
-        assertEquals('C', puzzleInputTest01.get(2).get(0));
-        assertEquals('Z', puzzleInputTest01.get(2).get(1));
-
+        assertEquals('C', parsePuzzleInput.get(2).get(0));
+        assertEquals('Z', parsePuzzleInput.get(2).get(1));
 
     }
-
 
 }
