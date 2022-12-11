@@ -8,11 +8,13 @@ public class Puzzle {
     public static void main(String[] args) {
         System.out.println("Hello Day2, Part2");
 
-        ArrayList<ArrayList<Character>> puzzleInput = new ArrayList<>();
+        ArrayList<ArrayList<Character>> myPuzzleInput = new ArrayList<>();
+
+        PuzzleInput puzzleInput = new PuzzleInput();
 
         //Read puzzle input located in folder: /scr/main/resources
         try {
-            puzzleInput = PuzzleInput.readIntoListOfCharacters("input.txt");
+            myPuzzleInput = puzzleInput.readIntoListOfCharacters("input.txt");
             System.out.println("Puzzle input read successfully");
         } catch (IOException e) {
             System.out.println("Puzzle input is missing. Closing application");
@@ -20,7 +22,7 @@ public class Puzzle {
             System.exit(0);
         }
 
-        StrategyGuide strategyGuide = new StrategyGuide(puzzleInput);
+        StrategyGuide strategyGuide = new StrategyGuide(myPuzzleInput);
 
         int scoreIfFollowedStrategyGuide = strategyGuide.calculateScore();
 

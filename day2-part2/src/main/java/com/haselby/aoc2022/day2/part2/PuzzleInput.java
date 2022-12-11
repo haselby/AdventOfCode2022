@@ -1,23 +1,19 @@
 package com.haselby.aoc2022.day2.part2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
+import java.io.*;
 import java.util.ArrayList;
 
 public class PuzzleInput {
 
-    public static ArrayList<ArrayList<Character>> readIntoListOfCharacters(String filename) throws IOException {
+    public ArrayList<ArrayList<Character>> readIntoListOfCharacters(String filename) throws IOException {
 
         ArrayList<ArrayList<Character>> listOfCharacters = new ArrayList<>();
 
-        // Find input file in resources folder: /scr/main/resources
-        URL puzzleInputFileUrl = PuzzleInput.class.getClassLoader().getResource(filename);
-        var file = (puzzleInputFileUrl != null) ? puzzleInputFileUrl.getFile() : null;
-        if (file == null) throw new IOException("Input filename does not exist!");
+        // Read file located in resources folder: /scr/main/resources
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(filename);
+        if (inputStream == null) throw new IOException("Input filename does not exist!");
 
-        try (BufferedReader puzzleInputFile = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader puzzleInputFile = new BufferedReader(new InputStreamReader(inputStream))) {
             int index = 0;
             String input;
             while ((input = puzzleInputFile.readLine()) != null) {

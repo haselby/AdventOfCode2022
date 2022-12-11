@@ -34,7 +34,8 @@ public class StrategyGuideTest {
         ArrayList<ArrayList<Character>> puzzleInputTest01 = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
+            PuzzleInput puzzleInput = new PuzzleInput();
+            puzzleInputTest01 = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();

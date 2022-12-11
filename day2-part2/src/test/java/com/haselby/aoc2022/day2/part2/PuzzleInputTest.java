@@ -11,10 +11,12 @@ public class PuzzleInputTest {
     @BeforeAll
     static void beforeAll() {
 
+
     }
 
     @BeforeEach
     void beforeEach() {
+
 
     }
 
@@ -32,13 +34,15 @@ public class PuzzleInputTest {
     @Test
     @DisplayName("readIntoListOfCharacters - passing example input file - should not throw exception")
     void readIntoListOfIntegers_ExampleInputFile_ShouldNotThrowException() {
-        assertDoesNotThrow(() -> PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt"));
+        PuzzleInput puzzleInput = new PuzzleInput();
+        assertDoesNotThrow(() -> puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt"));
     }
 
     @Test
     @DisplayName("readIntoListOfIntegers - passing missing input file - should throw exception")
     void readIntoListOfIntegers_MissingInputFile_ThrowsException() {
-        assertThrows(IOException.class, () -> PuzzleInput.readIntoListOfCharacters("missing-file.txt"));
+        PuzzleInput puzzleInput = new PuzzleInput();
+        assertThrows(IOException.class, () -> puzzleInput.readIntoListOfCharacters("missing-file.txt"));
 
     }
 
@@ -49,7 +53,8 @@ public class PuzzleInputTest {
         ArrayList<ArrayList<Character>> puzzleInputTest01 = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
+            PuzzleInput puzzleInput = new PuzzleInput();
+            puzzleInputTest01 = puzzleInput.readIntoListOfCharacters("test-input-d2p1-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
