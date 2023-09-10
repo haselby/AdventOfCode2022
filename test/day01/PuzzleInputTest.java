@@ -43,7 +43,7 @@ public class PuzzleInputTest {
     @Test
     @DisplayName("readIntoListOfIntegers - passing missing input file - should throw exception")
     void readIntoListOfIntegers_MissingInputFile_ThrowsException() {
-        assertThrows(IOException.class, () -> PuzzleInput.readIntoListOfIntegers("test/missing-file.txt"));
+        assertThrows(IOException.class, () -> PuzzleInput.readIntoListOfIntegers("missing-file.txt"));
 
     }
 
