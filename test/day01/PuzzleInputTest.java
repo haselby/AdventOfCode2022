@@ -37,7 +37,7 @@ public class PuzzleInputTest {
     @Test
     @DisplayName("readIntoListOfIntegers - passing example input file - should not throw exception")
     void readIntoListOfIntegers_ExampleInputFile_ShouldNotThrowException() {
-        assertDoesNotThrow(() -> PuzzleInput.readIntoListOfIntegers("test/input_day01-01.txt"));
+        assertDoesNotThrow(() -> PuzzleInput.readIntoListOfIntegers("input_day01-01.txt"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class PuzzleInputTest {
         List<Integer> puzzleInputTest01 = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("test/input_day01-01.txt");
+            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("input_day01-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class PuzzleInputTest {
         List<Integer> puzzleInputTest01 = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("test/input_day01-01.txt");
+            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("input_day01-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();

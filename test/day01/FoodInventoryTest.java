@@ -35,7 +35,7 @@ public class FoodInventoryTest {
         ArrayList<Integer> puzzleInputTest01 = new ArrayList<>();
 
         try {
-            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("test/input_day01-01.txt");
+            puzzleInputTest01 = PuzzleInput.readIntoListOfIntegers("input_day01-01.txt");
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ public class FirstPuzzle {
 
         //Read puzzle input located in folder: /resources
         try {
-            puzzleInput = PuzzleInput.readIntoListOfIntegers("main/input_day01.txt");
+            puzzleInput = PuzzleInput.readIntoListOfIntegers("input_day01.txt");
             System.out.println("Puzzle input read successfully");
         } catch (IOException e) {
             System.out.println("Puzzle input is missing. Closing application");
