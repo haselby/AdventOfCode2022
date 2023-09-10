@@ -1,9 +1,9 @@
 package day01;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class PuzzleInput {
@@ -12,12 +12,11 @@ public class PuzzleInput {
 
         ArrayList<Integer> listOfIntegers = new ArrayList<>();
 
-        // Find input file in resources folder: /scr/main/resources
-        URL puzzleInputFileUrl = PuzzleInput.class.getClassLoader().getResource(filename);
-        var file = (puzzleInputFileUrl != null) ? puzzleInputFileUrl.getFile() : null;
-        if (file == null) throw new IOException("Input filename does not exist!");
+        // Find input file in resources folder: /resources
+        InputStream inputStream = PuzzleInput.class.getResourceAsStream("/" + filename);
+        if (inputStream == null) throw new IOException("Input filename does not exist!");
 
-        try (BufferedReader puzzleInputFile = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader puzzleInputFile = new BufferedReader(new InputStreamReader(inputStream))) {
             String input;
             while ((input = puzzleInputFile.readLine()) != null) {
                 String[] data = input.split(",");

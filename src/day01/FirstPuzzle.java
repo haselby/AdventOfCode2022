@@ -10,7 +10,7 @@ public class FirstPuzzle {
 
         ArrayList<Integer> puzzleInput = new ArrayList<>();
 
-        //Read puzzle input located in folder: /resources
+        // Read puzzle input located in folder: /resources
         try {
             puzzleInput = PuzzleInput.readIntoListOfIntegers("input_day01.txt");
             System.out.println("Puzzle input read successfully");
