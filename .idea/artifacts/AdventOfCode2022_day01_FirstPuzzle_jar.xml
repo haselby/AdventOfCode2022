@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AdventOfCode2022-day01-FirstPuzzle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AdventOfCode2022_day01_FirstPuzzle_jar</output-path>
+    <root id="archive" name="AdventOfCode2022.jar">
+      <element id="module-output" name="AdventOfCode2022" />
+    </root>
+  </artifact>
+</component>
